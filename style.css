@@ -38,7 +38,9 @@
 .mario {
     width: 130px;           /* Tamanho do Mario */
     position: absolute;     /* Posicionamento livre */
-    bottom: 0;              /* Começa no chão */
+    bottom: 0; 
+    z-index: 10;        /* Sempre maior que a nuvem */
+             /* Começa no chão */
 }
 
 /* Classe que faz o Mario pular (ativada pelo JavaScript) */
@@ -50,9 +52,14 @@
 /* NUVEM - Elemento de fundo */
 /* ================================================== */
 .nuvem {
-    width: 500px;           /* Nuvem bem grande */
+    width: 350px;           /* Nuvem bem grande */
     position: absolute;
     animation: mexerNuvem 20s infinite linear; /* Mais lenta (fundo) */
+    z-index: 1;
+}
+.logo {
+    position: relative; /* ou absolute, dependendo do layout */
+    z-index: 10;        /* Sempre maior que a nuvem */
 }
 
 /* ================================================== */
@@ -63,7 +70,7 @@
 
     /* Centraliza o botão */
     display: flex;
-    justify-content: center;
+    
     align-items: center;
     flex-direction: column;
 
@@ -73,6 +80,7 @@
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 10;        /* Sempre maior que a nuvem */
 
     /* Fundo escuro semi-transparente */
     background-color: rgba(0, 0, 0, 0.5);
@@ -146,8 +154,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    align-items: center;
-   
+    align-items: center;   
 }
 
 .jogar{
