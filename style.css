@@ -190,3 +190,12 @@
 .gameover img{
     width: 370px;
 }
+
+.pontuacao{
+  display: flex;
+  gap: 15px;
+}
+
+.pontuacao h2{
+ width: 200px;
+}
