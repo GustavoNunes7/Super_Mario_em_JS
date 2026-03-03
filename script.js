@@ -7,6 +7,7 @@ let cano = document.querySelector('.cano'); // Encontra o cano
 let nuvem = document.querySelector('.nuvem');// Encontra a nuvem
 let telaFim = document.querySelector('.fim'); //Encontra a tela de gameover 
 let botaoReiniciar = document.querySelector('.reiniciar'); // Encontrar o botão
+let som = new Audio ('./Morte-Mario.mp3')
 
 console.log('=== PARADA 01 ===');
 console.log('Mario: ', mario);
@@ -92,7 +93,14 @@ let loopDoJogo =setInterval(function(){
 
         //TROCA A IMAGEM DO MARIO PARA O GAME OVER
         mario.src = "./img/game-over.png"
- 
+        mario.style.width ='70px'
+
+        //MOSTRAR A TELA DE GAME OVER
+        telaFim.style.visibility = 'visible'
+        som.play();
+
+        //Parar o loop
+        clearInterval(loopDoJogo);
     }
 
-})
+}, 10)

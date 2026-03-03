@@ -65,6 +65,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 
     /* Cobre a tela toda */
     position: fixed;
@@ -139,4 +140,9 @@
         width: 45px;        /* Cano menor */
         animation: mexerCano 1.2s infinite linear; /* Mais rápido */
     }
+}
+
+.tela-game-over{
+    display: flex;
+    flex-direction: column;
 }
