@@ -176,3 +176,17 @@
 .jogar:hover {
     background-color: #cc0000; /* Vermelho mais escuro ao passar mouse */
 }
+
+.turma{
+    display: flex;
+    justify-content: center;
+}
+
+.paragrafo{
+    z-index: 10;        /* Sempre maior que a nuvem */
+
+}
+
+.gameover img{
+    width: 370px;
+}

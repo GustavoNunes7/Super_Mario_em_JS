@@ -103,6 +103,7 @@ let loopDoJogo =setInterval(function(){
         clearInterval(loopDoJogo);
 
     }
+    
 
 }, 10)
 
