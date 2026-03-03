@@ -142,7 +142,30 @@
     }
 }
 
-.tela-game-over{
+.inicio{
     display: flex;
+    justify-content: center;
     flex-direction: column;
+    align-items: center;
+   
+}
+
+.jogar{
+    display: flex;
+    height: 60px;           /* Altura */
+    width: 300px;           /* Largura */
+    border-radius: 10px;    /* Borda arredondada */
+    border: none;           /* Sem borda */
+    font-size: 20px;        /* Tamanho da letra */
+    background-color: #ff0000; /* Vermelho */
+    color: white;           /* Letra branca */
+    cursor: pointer;        /* Mãozinha ao passar o mouse */
+    font-weight: bold;      /* Negrito */
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.jogar:hover {
+    background-color: #cc0000; /* Vermelho mais escuro ao passar mouse */
 }

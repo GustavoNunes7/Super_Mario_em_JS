@@ -7,7 +7,7 @@ let cano = document.querySelector('.cano'); // Encontra o cano
 let nuvem = document.querySelector('.nuvem');// Encontra a nuvem
 let telaFim = document.querySelector('.fim'); //Encontra a tela de gameover 
 let botaoReiniciar = document.querySelector('.reiniciar'); // Encontrar o botão
-let som = new Audio ('./Morte-Mario.mp3')
+let som = new Audio ('./Morte-Mario.mp3') //Adicionar som
 
 console.log('=== PARADA 01 ===');
 console.log('Mario: ', mario);
@@ -101,6 +101,68 @@ let loopDoJogo =setInterval(function(){
 
         //Parar o loop
         clearInterval(loopDoJogo);
+
     }
 
 }, 10)
+
+//FUNÇÃO PARA RENICIAR O JOGO
+function reiniciarJogo(){
+    console.log('=== REINICIANDO JOGO ===')
+
+    //PARAR SOM
+    som.pause();  
+    som.currentTime = 0;
+
+    //ESCONDER A TELA DE GAME OVER
+    telaFim.style.visibility = 'hidden'
+
+    //RESTAURAR O CANO
+    cano.style.animation = 'mexerCano  1.5s infinite linear'
+    cano.style.left = ''
+
+    //RESTAURA O MARIO
+    mario.src = './img/mario.gif'
+    mario.style.width = '130px'
+    mario.style.bottom = '0px'
+    mario.style.animation = '' // remove qualquer animação fixa
+    
+    //==================================================
+    // >>  CRIAR UM NOVO LOOP <<
+    //==================================================
+
+    loopDoJogo = setInterval(function(){
+        let posicaoCano = cano.offsetLeft;
+        let posicaoMario = +window.getComputedStyle(mario).bottom.replace('px', '')
+
+        // A MESMA CONDIÇÃO DE COLISÃO ANTERIOR
+        if (posicaoCano <100 && posicaoCano > 0 && posicaoMario < 60){
+            console.log("===== COLISÃO NO JOGO  REINICIANDO =====")
+
+            cano.style.animation = 'none';
+            cano.style.left = posicaoCano + 'px';
+
+             //Para o Mario
+            mario.style.animation = 'none'
+            mario.style.bottom = posicaoMario + 'px'
+
+            //TROCA A IMAGEM DO MARIO PARA O GAME OVER
+            mario.src = "./img/game-over.png"
+            mario.style.width ='70px'
+
+            //MOSTRAR A TELA DE GAME OVER
+            telaFim.style.visibility = 'visible'
+            som.play();
+
+            //Parar o loop
+            clearInterval(loopDoJogo);
+        }
+    },10);
+
+    
+} 
+//BOTÃO DE REINICIAR
+    botaoReiniciar.addEventListener('click', function(){
+        console.log('Botão  Reiniciar Clicado!')
+        reiniciarJogo();
+    });
