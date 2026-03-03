@@ -60,5 +60,39 @@ let loopDoJogo =setInterval(function(){
     // ---> Transforma o texto "120" no número 120. para o JS fazer contas
     let posicaoMario = +window.getComputedStyle(mario).bottom.replace('px', '')
 
-    console.log('cano:' , posicaoCano, 'Mario:',posicaoMario)
+    // console.log('cano:' , posicaoCano, 'Mario:',posicaoMario)
+
+    //CONDIÇÃO DE COLISÃO
+    // O if pergunta 3 coisas AO MESMO TEMPO:
+    //    1. O cano está perto do Mario? (posicaoCano <= 100)
+    //    2. O cano ainda está na tela? (posicaoMario > 0)
+    //    3. O Mario está no chão? (posicaoMario < 60 - não pulou)
+    // Se TODAS as 3 forem verdade, o Mario bateu!
+
+    if (posicaoCano <100 && posicaoCano > 0 && posicaoMario < 60){
+        console.log(' === COLISÃO DETECTADA! ===');
+        console.log('Cano na posição' , posicaoCano);
+        console.log('Mario na posição' , posicaoMario);
+        console.log('Fim de jogo!');
+
+    // Agora que o Mario bateu, precisamos:
+    //    1. Parar o cano (animation = 'none')
+    //    2. Parar o Mario (animation = 'none')
+    //    3. Trocar a imagem do Mario
+    //    4. Mostrar a tela de game over
+    //    5. Parar o loop (clearInterval)
+
+        //Para o Cano
+        cano.style.animation = 'none'
+        cano.style.left = posicaoCano + 'px'
+
+        //Para o Mario
+        mario.style.animation = 'none'
+        mario.style.bottom = posicaoMario + 'px'
+
+        //TROCA A IMAGEM DO MARIO PARA O GAME OVER
+        mario.src = "./img/game-over.png"
+ 
+    }
+
 })
